@@ -1,0 +1,14 @@
+# backend (Spring Boot / Maven)
+backend/target/
+backend/*.log
+
+# frontend (Next.js / Node.js)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# IDE / OS
+.vscode/
+.idea/
+*.iml
+.DS_Store
