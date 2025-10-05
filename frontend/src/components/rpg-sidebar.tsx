@@ -10,7 +10,7 @@ const menuItems = [
   { icon: Home, label: "ホーム", href: "/home" },
   { icon: ShoppingBag, label: "ショップ", href: "/shop" },
   { icon: User, label: "装備", href: "/equipment" },
-  { icon: Calendar, label: "カレンダー", href: "/calendar" },
+  { icon: Calendar, label: "カレンダー", href: "/calender" },
 ]
 
 export function RpgSidebar() {
@@ -41,9 +41,9 @@ export function RpgSidebar() {
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="p-6 space-y-6">
+        <div className="p-6 space-y-6 absolute top-15">
           {/* Logo/Title */}
-          <div className="border-4 border-border bg-primary p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]">
+          {/* <div className="border-4 border-border bg-primary p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-primary-foreground flex items-center justify-center">
                 <Sword className="w-6 h-6 text-primary" />
@@ -53,7 +53,7 @@ export function RpgSidebar() {
                 <p className="text-xs font-mono text-primary-foreground/80">STUDY QUEST</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Menu Items */}
           <nav className="space-y-2">
