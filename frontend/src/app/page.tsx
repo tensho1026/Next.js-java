@@ -91,7 +91,7 @@ export default function LandingPage() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Link href="/login?mode=signup">
+            <Link href="/register">
               <Button
                 size="lg"
                 className="w-full sm:w-auto text-xl px-8 py-6 border-4 border-border bg-primary hover:bg-primary/90 text-primary-foreground shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] hover:translate-x-1 hover:translate-y-1 transition-all pixel-text"
