@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "@/schema/auth/auth-form";
 
+
 export default function LoginPage() {
   const {
     register,
@@ -18,9 +19,12 @@ export default function LoginPage() {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = () => {
-    console.log("送信しました");
+  const onSubmit = async () => {
+    const res = await fetch("http://localhost:8080");
+    const data = await res.text();
+    console.log("送信", data);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
