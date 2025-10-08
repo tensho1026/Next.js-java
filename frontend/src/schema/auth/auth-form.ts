@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const registerSchemaRaw = z
   .object({
-    name: z.string().min(1, "名前を入力してください"),
+    username: z.string().min(1, "名前を入力してください"),
     email: z
       .string()
       .email({ message: "正しいメールアドレスを入力してください" }),

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Shield } from "lucide-react";
-import { registerSchemaRaw } from "@/schema/auth/auth-form";
+import { RegisterPayload, registerSchemaRaw } from "@/schema/auth/auth-form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -18,9 +18,18 @@ export default function RegisterPage() {
     resolver: zodResolver(registerSchemaRaw),
   });
 
-  const onSubmit = () => {
-    console.log("送信しました");
+  const onSubmit = async (data: RegisterPayload) => {
+    await fetch("http://localhost:8080/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      }),
+    });
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -49,31 +58,33 @@ export default function RegisterPage() {
                 id="name"
                 placeholder="例: 勉強戦士"
                 className="border-4 border-border font-mono"
-                {...register("name")}
+                {...register("username")}
               />
-              {errors.name && (
-                <p className="text-sm text-red-500">{errors.name?.message}</p>
+              {errors.username && (
+                <p className="text-sm text-red-500">
+                  {errors.username?.message}
+                </p>
               )}
             </div>
 
-              <div className="space-y-2">
-                <Label
-                  htmlFor="email"
-                  className="font-mono text-sm text-muted-foreground"
-                >
-                  メールアドレス
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  className="border-4 border-border font-mono"
-                  {...register("email")}
-                />
-                {errors.email && (
-                  <p className="text-sm text-red-500">{errors.email?.message}</p>
-                )}
-              </div>
+            <div className="space-y-2">
+              <Label
+                htmlFor="email"
+                className="font-mono text-sm text-muted-foreground"
+              >
+                メールアドレス
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="your@email.com"
+                className="border-4 border-border font-mono"
+                {...register("email")}
+              />
+              {errors.email && (
+                <p className="text-sm text-red-500">{errors.email?.message}</p>
+              )}
+            </div>
 
             <div className="space-y-2">
               <Label
